@@ -1,10 +1,10 @@
 CREATE TABLE teachers (
-    teacher_id INT PRIMARY KEY,
+    teacher_id SERIAL PRIMARY KEY,
     name VARCHAR(100) NOT NULL
 );
 
 CREATE TABLE students (
-    student_id INT PRIMARY KEY,
+    student_id SERIAL PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     teacher_id INT,
     FOREIGN KEY (teacher_id) REFERENCES teachers(teacher_id)
