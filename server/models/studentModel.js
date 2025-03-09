@@ -17,6 +17,18 @@ const getAllStudentsWithDetails = async () => {
     return result.rows;
 };
 
+const getStudentById = async (student_id) => {
+    const query = 'SELECT * FROM students WHERE student_id = $1';
+    const result = await db.query(query, [student_id]);
+    return result.rows[0];
+};
+
+const getTeacherById = async (teacher_id) => {
+    const query = 'SELECT * FROM teachers WHERE teacher_id = $1';
+    const result = await db.query(query, [teacher_id]);
+    return result.rows[0];
+};
+
 const reassignTeacher = async (student_id, new_teacher_id) => {
     const query = `
         UPDATE students 
@@ -30,5 +42,7 @@ const reassignTeacher = async (student_id, new_teacher_id) => {
 
 module.exports = {
     getAllStudentsWithDetails,
+    getStudentById,
+    getTeacherById,
     reassignTeacher
 };
