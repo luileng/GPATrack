@@ -9,6 +9,21 @@ const getAllStudents = async (req, res) => {
     }
 };
 
+const reassignTeacher = async (req, res) => {
+    const { student_id } = req.params;
+    const { new_teacher_id } = req.body;
+
+    try {
+        const updatedStudent = await studentService.reassignTeacher(student_id, new_teacher_id);
+        res.status(200).json({
+            updatedStudent,
+        });
+    } catch (error) {
+        res.status(500).json({ message: 'Error reassigning teacher', error: error.message });
+    }
+};
+
 module.exports = {
     getAllStudents,
+    reassignTeacher
 };

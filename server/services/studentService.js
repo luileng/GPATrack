@@ -9,6 +9,12 @@ const getAllStudents = async () => {
     }));
 };
 
+const reassignTeacher = async (student_id, new_teacher_id) => {
+    const result = await studentModel.reassignTeacher(student_id, new_teacher_id);
+    return result;
+};
+
 module.exports = {
     getAllStudents,
+    reassignTeacher,
 };
